@@ -9,7 +9,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jayjaytee.planetreego.PlanetReego;
 import org.jayjaytee.planetreego.enums.MESSAGES;
+import org.jayjaytee.planetreego.managers.ItemManager;
 import org.jayjaytee.planetreego.utils.NumberUtils;
+
+import java.util.ArrayList;
 
 public class ItemCommand implements CommandExecutor {
 
@@ -35,20 +38,33 @@ public class ItemCommand implements CommandExecutor {
                 return true;
             }
             if(Material.matchMaterial(args[1]) == null){
-                sender.sendMessage("§cThat item doesn't exist!");
-                return true;
+                if(!ItemManager.item.containsKey(args[1].toUpperCase())){
+                    sender.sendMessage("§cThat item doesn't exist!");
+                    return true;
+                }
             }
             if(args.length == 3){
                 if(!NumberUtils.isInt(args[2])){
                     sender.sendMessage("§cThe amount must be a number!");
                     return true;
                 }
-                player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[1].toUpperCase()), Integer.parseInt(args[2])));
+                if(ItemManager.item.containsKey(args[1].toUpperCase())){
+                    for(int i = 0; i < Integer.parseInt(args[2]); i++){
+                        player.getInventory().addItem(ItemManager.item.get(args[1].toUpperCase()));
+                    }
+                }else{
+                    player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[1].toUpperCase()), Integer.parseInt(args[2])));
+                }
                 player.sendMessage("§a§l+ §f" + args[1].toUpperCase() + "§7 (x" + args[2] + "§7)");
                 sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[1].toUpperCase() + "§7 (x"+args[2]+"§7)");
                 return true;
             }
-            player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[1].toUpperCase())));
+            if(ItemManager.item.containsKey(args[1].toUpperCase())){
+                player.getInventory().addItem(ItemManager.item.get(args[1].toUpperCase()));
+            }else{
+                player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[1].toUpperCase())));
+            }
+
             player.sendMessage("§a§l+ §f" + args[1].toUpperCase());
             sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[1].toUpperCase());
             return true;

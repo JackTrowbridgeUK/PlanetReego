@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jayjaytee.planetreego.commands.ItemCommand;
 import org.jayjaytee.planetreego.events.FoodEatEvent;
 import org.jayjaytee.planetreego.events.WeatherPreventionEvent;
+import org.jayjaytee.planetreego.managers.ItemManager;
 
 public final class PlanetReego extends JavaPlugin {
 
@@ -11,6 +12,7 @@ public final class PlanetReego extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         registerClasses();
+        ItemManager.registerItems();
     }
 
     @Override
