@@ -15,7 +15,6 @@ public class WeatherPreventionEvent implements Listener {
 
     @EventHandler
     private void onWeather(WeatherChangeEvent event){
-        event.setCancelled(true);
-        event.getWorld().setStorm(false);
+        event.setCancelled(event.toWeatherState());
     }
 }
