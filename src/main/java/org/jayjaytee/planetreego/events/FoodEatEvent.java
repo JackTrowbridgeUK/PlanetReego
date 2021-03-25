@@ -25,6 +25,7 @@ public class FoodEatEvent implements Listener {
         for(FOODS food : FOODS.values()){
             if(item.getType().equals(Material.valueOf(food.name()))){
                 event.setCancelled(true);
+                player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
                 player.setSaturation(food.saturation);
                 player.setFoodLevel(player.getFoodLevel() + food.bar);
                 return;
