@@ -6,6 +6,7 @@ Feel free to have a look around. Everything here is for you to use outside the p
 ## Discalimer
 
 This plugin is hosted on the PlanetReego server, although the versions on github and the server may not be synced.
+This plugin has only been tested on Paper 1.12.2 servers. This will probably not change in the future so if you're getting issues on different server software don't open an issue.
 
 WE DO TAKE DONATIONS BUT THEY GIVE YOU NO COSMETICS/IN-GAME ITEMS/COLOURED NAMES OR ANY INDICATION THAT YOU DONATED AT ALL. IT IS PURELY FOR IF YOU WANT TO HELP US OUT.
 THESE DONATIONS ARE NOT FOR PROFIT. IT'S JUST TO KEEP THE SERVER RUNNING. MORE INFORMATION ABOUT DONATIONS CAN BE SEEN ON THE STORE WEBSITE.
