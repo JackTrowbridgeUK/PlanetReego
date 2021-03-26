@@ -1,4 +1,4 @@
-package org.jayjaytee.planetreego.enums;
+package org.jayjaytee.planetreego.foodbuff.enums;
 
 public enum FOODS {
 

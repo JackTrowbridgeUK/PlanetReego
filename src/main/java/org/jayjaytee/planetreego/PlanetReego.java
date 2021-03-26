@@ -1,10 +1,10 @@
 package org.jayjaytee.planetreego;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jayjaytee.planetreego.commands.ItemCommand;
-import org.jayjaytee.planetreego.events.FoodEatEvent;
+import org.jayjaytee.planetreego.items.commands.ItemCommand;
+import org.jayjaytee.planetreego.foodbuff.events.FoodEatEvent;
 import org.jayjaytee.planetreego.events.WeatherPreventionEvent;
-import org.jayjaytee.planetreego.managers.ItemManager;
+import org.jayjaytee.planetreego.items.managers.ItemManager;
 
 public final class PlanetReego extends JavaPlugin {
 

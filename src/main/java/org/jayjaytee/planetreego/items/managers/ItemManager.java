@@ -1,4 +1,4 @@
-package org.jayjaytee.planetreego.managers;
+package org.jayjaytee.planetreego.items.managers;
 
 import org.bukkit.inventory.ItemStack;
 import org.jayjaytee.planetreego.items.POOP;

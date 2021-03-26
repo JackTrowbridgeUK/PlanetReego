@@ -1,4 +1,4 @@
-package org.jayjaytee.planetreego.commands;
+package org.jayjaytee.planetreego.items.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -9,10 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jayjaytee.planetreego.PlanetReego;
 import org.jayjaytee.planetreego.enums.MESSAGES;
-import org.jayjaytee.planetreego.managers.ItemManager;
+import org.jayjaytee.planetreego.items.managers.ItemManager;
 import org.jayjaytee.planetreego.utils.NumberUtils;
-
-import java.util.ArrayList;
 
 public class ItemCommand implements CommandExecutor {
 

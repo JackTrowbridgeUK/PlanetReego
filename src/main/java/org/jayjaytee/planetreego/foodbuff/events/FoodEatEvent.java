@@ -1,4 +1,4 @@
-package org.jayjaytee.planetreego.events;
+package org.jayjaytee.planetreego.foodbuff.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jayjaytee.planetreego.PlanetReego;
-import org.jayjaytee.planetreego.enums.FOODS;
+import org.jayjaytee.planetreego.foodbuff.enums.FOODS;
 
 public class FoodEatEvent implements Listener {
 
