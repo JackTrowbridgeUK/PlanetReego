@@ -7,3 +7,12 @@ website: mc.reego.org
 
 commands:
   item:
+  eco:
+    aliases:
+      - economy
+      - econ
+  balance:
+    aliases:
+      - bal
+      - cash
+      - money
