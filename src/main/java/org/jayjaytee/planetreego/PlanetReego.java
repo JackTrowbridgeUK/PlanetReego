@@ -3,6 +3,7 @@ package org.jayjaytee.planetreego;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jayjaytee.planetreego.data.commands.WipeCommand;
 import org.jayjaytee.planetreego.data.managers.SaveManager;
 import org.jayjaytee.planetreego.economy.commands.BalanceCommand;
 import org.jayjaytee.planetreego.economy.commands.EconomyCommand;
@@ -45,6 +46,7 @@ public final class PlanetReego extends JavaPlugin {
         new EconomyUtils(this);
         new BalanceCommand(this);
         new EconomyEvents(this);
+        new WipeCommand(this);
     }
 
     public FileConfiguration getPlayerConfig() { return playerConfig; }

@@ -24,7 +24,11 @@ public class BalanceCommand implements CommandExecutor {
 
         EconomyUtils economyUtils = new EconomyUtils(plugin);
 
-        sender.sendMessage("§f"+((Player) sender).getDisplayName() + "'s Balance: §a£"+economyUtils.getBalance(((Player) sender).getPlayer()));
+        double result = Double.parseDouble(String.valueOf(economyUtils.getBalance(((Player) sender).getPlayer())));
+
+        String s = String.format("%,.2f",result);
+
+        sender.sendMessage("§f"+((Player) sender).getDisplayName() + "'s Balance: §a£"+s);
 
         return true;
     }
