@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.jayjaytee.planetreego.libs.ItemBuilder;
 
-public class POOP {
+public class Poop {
     public static ItemStack getItem(){
         ItemStack item = new ItemBuilder(Material.WOOL, 1, (byte) 12)
                 .addEnchantment(Enchantment.LURE, 1)

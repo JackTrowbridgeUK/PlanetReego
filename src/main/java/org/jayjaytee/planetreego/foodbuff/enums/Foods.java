@@ -1,6 +1,6 @@
 package org.jayjaytee.planetreego.foodbuff.enums;
 
-public enum FOODS {
+public enum Foods {
 
     APPLE(10, 8),
     BREAD(7, 10),
@@ -32,7 +32,7 @@ public enum FOODS {
     public final Integer bar;
 
 
-    private FOODS(Integer saturation, Integer bar){
+    private Foods(Integer saturation, Integer bar){
         this.saturation = saturation;
         this.bar = bar;
     }

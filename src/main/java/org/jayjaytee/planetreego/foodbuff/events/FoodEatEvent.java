@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jayjaytee.planetreego.PlanetReego;
-import org.jayjaytee.planetreego.foodbuff.enums.FOODS;
+import org.jayjaytee.planetreego.foodbuff.enums.Foods;
 
 public class FoodEatEvent implements Listener {
 
@@ -22,7 +22,7 @@ public class FoodEatEvent implements Listener {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
 
-        for(FOODS food : FOODS.values()){
+        for(Foods food : Foods.values()){
             if(item.getType().equals(Material.valueOf(food.name()))){
                 event.setCancelled(true);
                 player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
