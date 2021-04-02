@@ -5,12 +5,12 @@ import org.bukkit.inventory.ItemStack;
 import org.jayjaytee.planetreego.libs.ItemBuilder;
 import org.jayjaytee.planetreego.utils.StringUtils;
 
-public class Generator {
-    public static ItemStack getItem(Material type){
-        return new ItemBuilder(type, 1)
-                .addNBT("gen", type.toString())
+public class SlowGenerator {
+    public static ItemStack getItem(){
+        return new ItemBuilder(Material.DROPPER, 1)
+                .addNBT("gen", "slow")
                 .addNBT("type", "generator")
-                .setName("&a" + StringUtils.formatString(type.toString()) + " Generator")
+                .setName("&7Slow Generator")
                 .addLore("&8Generator")
                 .addLore(" ")
                 .addLore("&ePlace on ground")

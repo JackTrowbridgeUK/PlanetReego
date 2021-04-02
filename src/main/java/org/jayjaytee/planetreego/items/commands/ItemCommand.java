@@ -84,7 +84,32 @@ public class ItemCommand implements CommandExecutor {
                     sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[2].toUpperCase());
                 }
                 return true;
-            }else{
+            }else if(args[1].equalsIgnoreCase("generator")){
+                if(!ItemManager.genItem.containsKey(args[2].toUpperCase())){
+                    sender.sendMessage("§cThat item doesn't exist!");
+                    return true;
+                }
+                if(args.length == 4){
+                    if(!NumberUtils.isInt(args[3])){
+                        sender.sendMessage("§cThe amount must be a number!");
+                        return true;
+                    }
+                    if(Integer.parseInt(args[3]) >= 2304){
+                        sender.sendMessage("§cThe number must be smaller than 2304!");
+                        return true;
+                    }
+                    for(int i = 0; i < Integer.parseInt(args[3]); i++){
+                        player.getInventory().addItem((ItemManager.genItem.get(args[2].toUpperCase())));
+                    }
+                    player.sendMessage("§a§l+ §f" + args[2].toUpperCase() + "_GENERATOR§7 (x" + args[3] + "§7)");
+                    sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[2].toUpperCase() + "_GENERATOR§7 (x"+args[3]+"§7)");
+                }else if(args.length == 3){
+                    player.getInventory().addItem(ItemManager.genItem.get(args[2].toUpperCase()));
+                    player.sendMessage("§a§l+ §f" + args[2].toUpperCase()+"_GENERATOR");
+                    sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[2].toUpperCase()+"_GENERATOR");
+                }
+                return true;
+            } else{
                 sender.sendMessage("§cIncorrect Usage! /item (player) (minecraft/item/generator) (item) [amount]");
                 return true;
             }

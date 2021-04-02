@@ -32,6 +32,7 @@ public final class PlanetReego extends JavaPlugin {
 
         registerClasses();
         ItemManager.registerItems();
+        ItemManager.registerGens();
     }
 
     @Override
