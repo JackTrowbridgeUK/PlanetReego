@@ -27,48 +27,70 @@ public class ItemCommand implements CommandExecutor {
             return true;
         }
 
-        // /item (player) (item) (amount)
+        // /item (player) (minecraft/item/generator) (item) (amount)
 
-        if(args.length == 2 || args.length == 3){
+        if(args.length == 3 || args.length == 4){
             Player player = Bukkit.getServer().getPlayer(args[0]);
             if(player == null){
                 sender.sendMessage("§cThat player isn't online!");
                 return true;
             }
-            if(Material.matchMaterial(args[1]) == null){
-                if(!ItemManager.item.containsKey(args[1].toUpperCase())){
+
+            if(args[1].equalsIgnoreCase("minecraft")){
+                if(Material.matchMaterial(args[2]) == null){
                     sender.sendMessage("§cThat item doesn't exist!");
                     return true;
                 }
-            }
-            if(args.length == 3){
-                if(!NumberUtils.isInt(args[2])){
-                    sender.sendMessage("§cThe amount must be a number!");
+                if(args.length == 4){
+                    if(!NumberUtils.isInt(args[3])){
+                        sender.sendMessage("§cThe amount must be a number!");
+                        return true;
+                    }
+                    if(Integer.parseInt(args[3]) >= 2304){
+                        sender.sendMessage("§cThe number must be smaller than 2304!");
+                        return true;
+                    }
+                    player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[2]), Integer.parseInt(args[3])));
+                    player.sendMessage("§a§l+ §f" + args[2].toUpperCase() + "§7 (x" + args[3] + "§7)");
+                    sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[2].toUpperCase() + "§7 (x"+args[3]+"§7)");
+                }else if(args.length == 3){
+                    player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[2])));
+                    player.sendMessage("§a§l+ §f" + args[2].toUpperCase());
+                    sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[2].toUpperCase());
+                }
+                return true;
+            }else if(args[1].equalsIgnoreCase("item")){
+                if(!ItemManager.item.containsKey(args[2].toUpperCase())){
+                    sender.sendMessage("§cThat item doesn't exist!");
                     return true;
                 }
-                if(ItemManager.item.containsKey(args[1].toUpperCase())){
-                    for(int i = 0; i < Integer.parseInt(args[2]); i++){
-                        player.getInventory().addItem(ItemManager.item.get(args[1].toUpperCase()));
+                if(args.length == 4){
+                    if(!NumberUtils.isInt(args[3])){
+                        sender.sendMessage("§cThe amount must be a number!");
+                        return true;
                     }
-                }else{
-                    player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[1].toUpperCase()), Integer.parseInt(args[2])));
+                    if(Integer.parseInt(args[3]) >= 2304){
+                        sender.sendMessage("§cThe number must be smaller than 2304!");
+                        return true;
+                    }
+                    for(int i = 0; i < Integer.parseInt(args[3]); i++){
+                        player.getInventory().addItem((ItemManager.item.get(args[2].toUpperCase())));
+                    }
+                    player.sendMessage("§a§l+ §f" + args[2].toUpperCase() + "§7 (x" + args[3] + "§7)");
+                    sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[2].toUpperCase() + "§7 (x"+args[3]+"§7)");
+                }else if(args.length == 3){
+                    player.getInventory().addItem(ItemManager.item.get(args[2].toUpperCase()));
+                    player.sendMessage("§a§l+ §f" + args[2].toUpperCase());
+                    sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[2].toUpperCase());
                 }
-                player.sendMessage("§a§l+ §f" + args[1].toUpperCase() + "§7 (x" + args[2] + "§7)");
-                sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[1].toUpperCase() + "§7 (x"+args[2]+"§7)");
+                return true;
+            }else{
+                sender.sendMessage("§cIncorrect Usage! /item (player) (minecraft/item/generator) (item) [amount]");
                 return true;
             }
-            if(ItemManager.item.containsKey(args[1].toUpperCase())){
-                player.getInventory().addItem(ItemManager.item.get(args[1].toUpperCase()));
-            }else{
-                player.getInventory().addItem(new ItemStack(Material.matchMaterial(args[1].toUpperCase())));
-            }
-
-            player.sendMessage("§a§l+ §f" + args[1].toUpperCase());
-            sender.sendMessage("§aSuccessfully given " + player.getDisplayName() + " §f" + args[1].toUpperCase());
-            return true;
         }
 
-        sender.sendMessage("§cIncorrect Usage! /item (player) (item) [amount]");
+        sender.sendMessage("§cIncorrect Usage! /item (player) (minecraft/item/generator) (item) [amount]");
         return true;
     }
 }

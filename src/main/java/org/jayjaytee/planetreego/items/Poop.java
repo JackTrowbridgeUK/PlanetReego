@@ -8,7 +8,7 @@ import org.jayjaytee.planetreego.libs.ItemBuilder;
 
 public class Poop {
     public static ItemStack getItem(){
-        ItemStack item = new ItemBuilder(Material.WOOL, 1, (byte) 12)
+        return new ItemBuilder(Material.WOOL, 1, (byte) 12)
                 .addEnchantment(Enchantment.LURE, 1)
                 .addItemFlags(ItemFlag.HIDE_ENCHANTS)
                 .setName("§a§lPoop!")
@@ -16,6 +16,5 @@ public class Poop {
                         " ",
                         "§c§lADMIN ITEM")
                 .build();
-        return item;
     }
 }

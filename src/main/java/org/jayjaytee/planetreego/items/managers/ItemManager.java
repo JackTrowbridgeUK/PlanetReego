@@ -10,6 +10,7 @@ public class ItemManager {
     public static HashMap<String, ItemStack> item = new HashMap<>();
 
     public static void registerItems(){
+
         item.put("POOP", Poop.getItem());
     }
 }
